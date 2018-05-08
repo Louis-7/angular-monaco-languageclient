@@ -1,6 +1,23 @@
 # angular-monaco-languageclient
 A Angular project which use https://github.com/TypeFox/monaco-languageclient
 
+## Prepare
+
+Install from repository:
+
+`git clone https://github.com/Louis-7/angular-monaco-languageclient.git`
+
+Install dependency:
+
+`npm install`
+
+Delete some typescript definition to make sure project pass compile. Go to `node_modules\monaco-languageclient\lib` and delete all **.d.ts file.
+
+Download exemple from `https://github.com/TypeFox/monaco-languageclient`
+
+## Run
+Start client with `npm start`. And go to `monaco-languageclient\example` run language server.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
