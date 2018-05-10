@@ -6,7 +6,7 @@ import {
   BaseLanguageClient, CloseAction, ErrorAction,
   createMonacoServices, createConnection
 } from 'monaco-languageclient';
-import normalizeUrl = require('normalize-url');
+import { normalizeUrl } from 'normalize-url';
 const ReconnectingWebSocket = require('reconnecting-websocket');
 @Component({
   selector: 'app-monaco-editor',
