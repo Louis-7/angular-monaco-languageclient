@@ -514,7 +514,7 @@ module.exports = {
     "process": true,
     "module": false,
     "clearImmediate": false,
-    "setImmediate": false
+    "setImmediate": true
   },
   "devServer": {
     "historyApiFallback": true

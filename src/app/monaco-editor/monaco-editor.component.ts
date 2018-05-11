@@ -33,11 +33,11 @@ export class MonacoEditorComponent implements OnInit {
     "line_endings": "unix"
   }`;
 
-  // public model: NgxEditorModel = {
-  //   value: this.code,
-  //   language: this.languageId,
-  //   // uri: 'https://github.com/Microsoft/vscode-extension-samples/blob/master/package.json',
-  // };
+  public model: NgxEditorModel = {
+    value: this.code,
+    language: this.languageId,
+    uri: 'foo.json',
+  };
 
   constructor() { }
 
@@ -82,7 +82,7 @@ export class MonacoEditorComponent implements OnInit {
         // disable the default error handler
         errorHandler: {
           error: () => ErrorAction.Continue,
-          closed: () => CloseAction.Restart
+          closed: () => CloseAction.DoNotRestart
         }
       },
       services,
