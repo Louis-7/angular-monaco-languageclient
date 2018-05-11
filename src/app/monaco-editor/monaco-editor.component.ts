@@ -15,24 +15,29 @@ const ReconnectingWebSocket = require('reconnecting-websocket');
 })
 export class MonacoEditorComponent implements OnInit {
 
+  public languageId = 'json';
+  // public languageId = 'typescript';
+  // public languageId = 'javascript';
+
   public options = {
-    theme: 'vs-dark',
+    theme: 'vs-light',
     glyphMargin: true,
     lightbulb: {
       enabled: true
-    }
+    },
+    language: this.languageId
   };
 
-  public code = `{
+  private code = `{
     "$schema": "http://json.schemastore.org/coffeelint",
     "line_endings": "unix"
   }`;
 
-  public model: NgxEditorModel = {
-    value: this.code,
-    language: 'json',
-    uri: 'inmemory://model.json',
-  };
+  // public model: NgxEditorModel = {
+  //   value: this.code,
+  //   language: this.languageId,
+  //   // uri: 'https://github.com/Microsoft/vscode-extension-samples/blob/master/package.json',
+  // };
 
   constructor() { }
 
@@ -41,60 +46,65 @@ export class MonacoEditorComponent implements OnInit {
 
   monacoOnInit(editor) {
     // create the web socket
-    const url = createUrl('/sampleServer');
-    const webSocket = createWebSocket(url);
+    const url = this.createUrl();
+    const webSocket = this.createWebSocket(url);
     // listen when the web socket is opened
+    const services = createMonacoServices(editor);
     listen({
       webSocket,
       onConnection: connection => {
         // create and start the language client
-        const languageClient = createLanguageClient(connection);
+        const languageClient = this.createLanguageClient(connection, services);
         const disposable = languageClient.start();
         connection.onClose(() => disposable.dispose());
       }
     });
+  }
 
-    const services = createMonacoServices(editor);
-    function createLanguageClient(connection: MessageConnection): BaseLanguageClient {
-      return new BaseLanguageClient({
-        name: 'Sample Language Client',
-        clientOptions: {
-          // use a language id as a document selector
-          documentSelector: ['json'],
-          // disable the default error handler
-          errorHandler: {
-            error: () => ErrorAction.Continue,
-            closed: () => CloseAction.DoNotRestart
-          }
-        },
-        services,
-        // create a language client connection from the JSON RPC connection on demand
-        connectionProvider: {
-          get: (errorHandler, closeHandler) => {
-            return Promise.resolve(createConnection(connection, errorHandler, closeHandler));
-          }
+  public createUrl(): string {
+    // const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+    // return normalizeUrl(`${protocol}://${location.host}${location.pathname}${path}`);
+
+    switch (this.languageId) {
+      case 'json':
+        return 'ws://localhost:3000/sampleServer';
+      case 'typescript':
+        return 'ws://dln-vm-db2zos1:33000/services/languages/typescript';
+    }
+  }
+
+  public createLanguageClient(connection: MessageConnection, services: BaseLanguageClient.IServices): BaseLanguageClient {
+    return new BaseLanguageClient({
+      name: `${this.languageId.toUpperCase()} Client`,
+      clientOptions: {
+        // use a language id as a document selector
+        documentSelector: [this.languageId],
+        // disable the default error handler
+        errorHandler: {
+          error: () => ErrorAction.Continue,
+          closed: () => CloseAction.Restart
         }
-      });
-    }
+      },
+      services,
+      // create a language client connection from the JSON RPC connection on demand
+      connectionProvider: {
+        get: (errorHandler, closeHandler) => {
+          return Promise.resolve(createConnection(connection, errorHandler, closeHandler));
+        }
+      }
+    });
+  }
 
-    function createUrl(path: string): string {
-      // const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-      // return normalizeUrl(`${protocol}://${location.host}${location.pathname}${path}`);
-
-      return 'ws://localhost:3000/sampleServer'
-    }
-
-    function createWebSocket(socketUrl: string): WebSocket {
-      const socketOptions = {
-        maxReconnectionDelay: 10000,
-        minReconnectionDelay: 1000,
-        reconnectionDelayGrowFactor: 1.3,
-        connectionTimeout: 10000,
-        maxRetries: Infinity,
-        debug: false
-      };
-      return new ReconnectingWebSocket(socketUrl, undefined, socketOptions);
-    }
+  public createWebSocket(socketUrl: string): WebSocket {
+    const socketOptions = {
+      maxReconnectionDelay: 10000,
+      minReconnectionDelay: 1000,
+      reconnectionDelayGrowFactor: 1.3,
+      connectionTimeout: 10000,
+      maxRetries: Infinity,
+      debug: false
+    };
+    return new ReconnectingWebSocket(socketUrl, undefined, socketOptions);
   }
 
 }
