@@ -12,11 +12,11 @@
         "assets",
         "favicon.ico",
         {
-  "glob": "**/*",
-  "input": "C:/Louis/GitHub/angular-monaco-languageclient/node_modules/ngx-monaco-editor/assets/monaco/",
-  "output": "assets/monaco",
-  "allowOutsideOutDir": false
-}
+          "glob": "**/*",
+          "input": "../node_modules/ngx-monaco-editor/assets/monaco/",
+          "output": "assets/monaco",
+          "allowOutsideOutDir": false
+        }
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -62,7 +62,6 @@
   },
   "defaults": {
     "styleExt": "sass",
-    "component": {
-    }
+    "component": {}
   }
 }
