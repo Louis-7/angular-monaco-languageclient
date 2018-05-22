@@ -11,21 +11,19 @@ const ReconnectingWebSocket = require('reconnecting-websocket');
 @Component({
   selector: 'app-monaco-editor',
   templateUrl: './monaco-editor.component.html',
-  styleUrls: ['./monaco-editor.component.sass']
+  styleUrls: ['./monaco-editor.component.scss']
 })
 export class MonacoEditorComponent implements OnInit {
 
   public languageId = 'json';
   // public languageId = 'typescript';
-  // public languageId = 'javascript';
 
   public options = {
     theme: 'vs-light',
     glyphMargin: true,
     lightbulb: {
       enabled: true
-    },
-    language: this.languageId
+    }
   };
 
   private code = `{
@@ -41,8 +39,7 @@ export class MonacoEditorComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   monacoOnInit(editor) {
     // create the web socket
@@ -62,14 +59,11 @@ export class MonacoEditorComponent implements OnInit {
   }
 
   public createUrl(): string {
-    // const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-    // return normalizeUrl(`${protocol}://${location.host}${location.pathname}${path}`);
-
     switch (this.languageId) {
       case 'json':
         return 'ws://localhost:3000/sampleServer';
       case 'typescript':
-        return 'ws://dln-vm-db2zos1:33000/services/languages/typescript';
+        return 'your/language-server';
     }
   }
 
