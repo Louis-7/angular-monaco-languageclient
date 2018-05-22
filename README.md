@@ -37,3 +37,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+## Notice
+
+Only json has been tested with language server. I didn't test other language, but it should be similar. I will find more language server and put them in this example in future.
