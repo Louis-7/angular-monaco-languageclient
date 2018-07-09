@@ -1,5 +1,5 @@
 # angular-monaco-languageclient
-A monaco editor based on Angular frame work. This project is a example to show how to use ngx-monaco-editor with monaco language client, there are some errors when use these libraries together, so this project is to show which version of these libraries you should use and how to connect your monaco editor to language server. If you're trying to build a code editor/IDE based on Angular, this project could be a good start.
+A monaco editor based on Angular frame work. This project is an example to show how to use ngx-monaco-editor with monaco language client, there are some errors when I use these libraries together, so this project is to show which version of these libraries you should use and how to connect your monaco editor to language server. If you're trying to build a code editor/IDE based on Angular, this project could be a good start.
 
 ## Prepare
 
