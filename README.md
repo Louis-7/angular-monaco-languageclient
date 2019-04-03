@@ -11,7 +11,7 @@ Install dependency:
 
 `npm install`
 
-Update typescript definition file to make sure project pass compile. Go to `node_modules/monaco-languageclient/lib/index.d.ts`
+Update typescript definition or you will fail the compilation. This is because ngx-monaco-editor & monaco-languageclient both use the monaco definition file and it makes the duplicate identifier issue. Go to `node_modules/monaco-languageclient/lib/index.d.ts`
 
 ```typescript
 export * from './disposable';
