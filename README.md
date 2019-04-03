@@ -25,7 +25,7 @@ export * from 'vscode-base-languageclient/lib/base';
 export * from 'vscode-base-languageclient/lib/connection';
 ```
 
-Download example from `https://github.com/TypeFox/monaco-languageclient`, this will be your language-server. Please follow instruction from their github page.
+Download example from https://github.com/TypeFox/monaco-languageclient, this will be your language-server. Please follow instruction from their github page.
 
 ## Run
 Start client with `npm start`. And go to `monaco-languageclient\example` run language server.
