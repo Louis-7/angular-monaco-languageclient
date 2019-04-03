@@ -1,5 +1,5 @@
 # angular-monaco-languageclient
-A monaco editor based on Angular frame work. This project is an example to show how to use ngx-monaco-editor with monaco language client, there are some errors when I use these libraries together, so this project is to show which version of these libraries you should use and how to connect your monaco editor to language server. If you're trying to build a code editor/IDE based on Angular, this project could be a good start.
+A Monaco editor based on Angular framework. This project is an example to show how to use ngx-monaco-editor with monaco language client, there are some errors when I use these libraries together, so this project is to show which version of these libraries you should use and how to connect your Monaco editor to language server. If you're trying to build a code editor/IDE based on Angular, this project could be a good start.
 
 ## Prepare
 
@@ -11,7 +11,7 @@ Install dependency:
 
 `npm install`
 
-Update typescript definition or you will fail the compilation. This is because ngx-monaco-editor & monaco-languageclient both use the monaco definition file and it makes the duplicate identifier issue. Go to `node_modules/monaco-languageclient/lib/index.d.ts`
+Update typescript definition or you will fail the compilation. This is because ngx-monaco-editor & monaco-languageclient both use the Monaco definition file and it makes the duplicate identifier issue. Go to `node_modules/monaco-languageclient/lib/index.d.ts`
 
 ```typescript
 export * from './disposable';
