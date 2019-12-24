@@ -130,7 +130,12 @@ module.exports = {
       "./src",
       "./node_modules"
     ],
-    "alias": rxPaths(),
+    "alias": Object.assign(
+      rxPaths(),
+      {
+        'vscode': require.resolve('monaco-languageclient/lib/vscode-compatibility')
+      }
+    ),
     "mainFields": [
       "es2015",
       "browser",

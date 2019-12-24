@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxEditorModel } from 'ngx-monaco-editor';
-
 import { listen, MessageConnection } from 'vscode-ws-jsonrpc';
-import {
-  BaseLanguageClient, CloseAction, ErrorAction,
-  createMonacoServices, createConnection
-} from 'monaco-languageclient';
-import { normalizeUrl } from 'normalize-url';
+import { MonacoLanguageClient, CloseAction, ErrorAction, MonacoServices, createConnection } from 'monaco-languageclient';
+// import { normalizeUrl } from 'normalize-url';
 const ReconnectingWebSocket = require('reconnecting-websocket');
 @Component({
   selector: 'app-monaco-editor',
@@ -20,10 +16,7 @@ export class MonacoEditorComponent implements OnInit {
 
   public options = {
     theme: 'vs-light',
-    glyphMargin: true,
-    lightbulb: {
-      enabled: true
-    }
+    language: 'javascript'
   };
 
   private code = `{
@@ -41,17 +34,23 @@ export class MonacoEditorComponent implements OnInit {
 
   ngOnInit() { }
 
+  onInit(editor) {
+    let line = editor.getPosition();
+    console.log(line);
+  }
+
   monacoOnInit(editor) {
+    // install Monaco language client services
+    MonacoServices.install(editor);
     // create the web socket
     const url = this.createUrl();
     const webSocket = this.createWebSocket(url);
     // listen when the web socket is opened
-    const services = createMonacoServices(editor);
     listen({
       webSocket,
-      onConnection: connection => {
+      onConnection: (connection: MessageConnection) => {
         // create and start the language client
-        const languageClient = this.createLanguageClient(connection, services);
+        const languageClient = this.createLanguageClient(connection);
         const disposable = languageClient.start();
         connection.onClose(() => disposable.dispose());
       }
@@ -67,8 +66,8 @@ export class MonacoEditorComponent implements OnInit {
     }
   }
 
-  public createLanguageClient(connection: MessageConnection, services: BaseLanguageClient.IServices): BaseLanguageClient {
-    return new BaseLanguageClient({
+  public createLanguageClient(connection: MessageConnection): MonacoLanguageClient {
+    return new MonacoLanguageClient({
       name: `${this.languageId.toUpperCase()} Client`,
       clientOptions: {
         // use a language id as a document selector
@@ -79,11 +78,10 @@ export class MonacoEditorComponent implements OnInit {
           closed: () => CloseAction.DoNotRestart
         }
       },
-      services,
       // create a language client connection from the JSON RPC connection on demand
       connectionProvider: {
         get: (errorHandler, closeHandler) => {
-          return Promise.resolve(createConnection(connection, errorHandler, closeHandler));
+          return Promise.resolve(createConnection(<any>connection, errorHandler, closeHandler));
         }
       }
     });

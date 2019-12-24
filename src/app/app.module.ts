@@ -18,7 +18,7 @@ import { MonacoConfig } from './monaco-editor/monaco-config';
   imports: [
     BrowserModule,
     FormsModule,
-    MonacoEditorModule.forRoot(MonacoConfig),
+    MonacoEditorModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
