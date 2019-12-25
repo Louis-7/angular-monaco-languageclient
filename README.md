@@ -33,7 +33,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Note
+## Notes
 
 - Only JSON has been tested with the language server. I didn't test other languages, but it should be similar. I will find more language server and put them in this example in the future.
 - I see some developers are suffering from the build error when using Angular and monaco-languageclient together. I solve the problem with an additional webpack configuration file, you will find `extra-webpack.config.js` under the root folder.
