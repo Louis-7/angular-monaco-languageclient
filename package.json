@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "monaco-languageclient": "^0.10.2",
     "ngx-monaco-editor": "^8.1.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
