@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('ng-monacolanguage app is running!');
+    expect(page.getTitleText()).toEqual('angular-monaco-languageclient app is running!');
   });
 
   afterEach(async () => {
