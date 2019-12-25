@@ -1,27 +1,39 @@
-# NgMonacolanguage
+# angular-monaco-languageclient
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+**Update: This project is now using Angular 8 and the latest version of monaco-languageclient.**
+
+**Star this repo if it helps you**
+
+A Monaco editor (with the ability to connect to a language server) based on Angular framework. This project is an example to show how to use [ngx-monaco-editor](https://github.com/atularen/ngx-monaco-editor) with [monaco-languageclient](https://github.com/TypeFox/monaco-languageclient) together, there are some errors when I use these libraries together, so this project is to show which version of these libraries you should use and how to connect your Monaco editor to language server. If you're trying to build a code editor/IDE based on Angular and connect to a language server, this project could be a good start.
+
+If you just need to use Monaco Editor with Angular, you should go to [ngx-monaco-editor](https://github.com/atularen/ngx-monaco-editor).
+
+
+
+## Prepare
+
+Install from the repository:
+
+`git clone https://github.com/Louis-7/angular-monaco-languageclient.git`
+
+Install dependencies:
+
+`npm install`
+
+Download example language server from [monaco-languageclient](https://github.com/TypeFox/monaco-languageclient). Please follow instructions from their GitHub page.
+
+## Run
+Start client with `npm start`. And go to `monaco-languageclient\example` run language server.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
+## Note
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Only JSON has been tested with the language server. I didn't test other languages, but it should be similar. I will find more language server and put them in this example in the future.
+- I see some developers are suffering from the build error when using Angular and monaco-languageclient together. I solve the problem with an additional webpack configuration file, you will find `extra-webpack.config.js` under the root folder.
