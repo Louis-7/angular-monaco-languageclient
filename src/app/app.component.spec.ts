@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ng-monacolanguage'`, () => {
+  it(`should have as title 'angular-monaco-languageclient'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ng-monacolanguage');
+    expect(app.title).toEqual('angular-monaco-languageclient');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ng-monacolanguage app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('angular-monaco-languageclient app is running!');
   });
 });

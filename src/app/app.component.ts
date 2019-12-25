@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-monacolanguage';
+  title = 'angular-monaco-languageclient';
 
   editorOptions = {theme: 'vs-dark', language: 'javascript'};
   code: string= 'function x() {\nconsole.log("Hello world!");\n}';
