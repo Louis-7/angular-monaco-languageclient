@@ -4,6 +4,8 @@
 
 **Star this repo if it helps you**
 
+[![cpgif](https://github.com/Louis-7/angular-monaco-languageclient/blob/master/languageclient.gif?raw=true)](https://github.com/Louis-7/angular-monaco-languageclient)
+
 A Monaco editor (with the ability to connect to a language server) based on Angular framework. This project is an example to show how to use [ngx-monaco-editor](https://github.com/atularen/ngx-monaco-editor) with [monaco-languageclient](https://github.com/TypeFox/monaco-languageclient) together, there are some errors when I use these libraries together, so this project is to show which version of these libraries you should use and how to connect your Monaco editor to language server. If you're trying to build a code editor/IDE based on Angular and connect to a language server, this project could be a good start.
 
 If you just need to use Monaco Editor with Angular, you should go to [ngx-monaco-editor](https://github.com/atularen/ngx-monaco-editor).
@@ -33,7 +35,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Note
+## Notes
 
 - Only JSON has been tested with the language server. I didn't test other languages, but it should be similar. I will find more language server and put them in this example in the future.
 - I see some developers are suffering from the build error when using Angular and monaco-languageclient together. I solve the problem with an additional webpack configuration file, you will find `extra-webpack.config.js` under the root folder.
