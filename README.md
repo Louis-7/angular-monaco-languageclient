@@ -1,6 +1,6 @@
 # angular-monaco-languageclient
 
-**Update: This project is now using Angular 8 and the latest version of monaco-languageclient.**
+**Update: Upgrade to Angular 9 now.**
 
 **Star this repo if it helps you**
 
@@ -10,6 +10,9 @@ A Monaco editor (with the ability to connect to a language server) based on Angu
 
 If you just need to use Monaco Editor with Angular, you should go to [ngx-monaco-editor](https://github.com/atularen/ngx-monaco-editor).
 
+**Old version:**
+
+- Angular 8: ng-v8
 
 
 ## Prepare
